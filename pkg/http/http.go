@@ -37,5 +37,10 @@ func (s *Server) Serve() error {
 	s.POST("/series", s.seriesCreate)
 	s.GET("/series", s.listSeries)
 
+	s.POST("/series/:sid/events", s.eventCreate)
+	s.GET("/series/:sid/events", s.eventList)
+	s.GET("/series/:sid/events/:eid", s.eventFetch)
+	s.DELETE("/series/:sid/events/:eid", s.eventArchive)
+
 	return s.Start(s.bindStr)
 }
